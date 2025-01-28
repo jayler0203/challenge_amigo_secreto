@@ -2,13 +2,19 @@ const inputAmigo = document.getElementById("amigo");
 let amigos = [];
 
 function agregarAmigo() {
-  if (inputAmigo.value.trim() == "") {
+   let inputValor = inputAmigo.value.trim()
+  if (inputValor == "") {
     alert("Por favor, inserte un nombre.");
-    return;
+  }else if(amigos.includes(inputValor)){
+    alert("No se permiten nombres duplicados")
+  }else{
+    amigos.push(inputValor);
+    inputAmigo.value = "";
+    actualizarListaAmigos();
   }
-  amigos.push(inputAmigo.value.trim());
-  inputAmigo.value = "";
-  actualizarListaAmigos();
+  console.log(amigos);
+  
+
 }
 function actualizarListaAmigos() {
   const lista = document.getElementById("listaAmigos");
